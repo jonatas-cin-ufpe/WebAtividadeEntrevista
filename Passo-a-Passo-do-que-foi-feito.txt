@@ -1,0 +1,20 @@
+Resolução da Atividade, o que foi feito:
+
+1. Campo CPF adicionado na tabela CLIENTES, assim como em todas as Stored Procedures que envolvam essa tabela.
+
+2. Constraint do tipo UNIQUE adicionado a tabela CLIENTES e relacionada ao campo CPF. Para que o banco não permita 
+que sejam registradas valores duplicados neste campo.
+
+3. Atributo CPF adicionado na Model (ClientModel), como Required. MaxLength = 14 e uma expressão regular que 
+obrigue o usuário a cadastrar um CPF no formato XXX.XXX.XXX.-XX.
+
+4. Atributo CPF adicionado em todas as partes do código que fazia referência aos atributos de ClienteModel e da 
+Tabela Cliente, a fim de prevenir qualquer tipo de erro.
+
+5. Todo o formulário da View Forms.chtml foi envolvido dentro de um HtmlBeginForm para que os dados de CPF 
+fossem capturados e enviados para o Controller.
+
+6. Em ClienteController foi adicionado um try/catch nos métodos Incluir e Alterar, nos casos em que a cláusula 
+UNIQUE fosse quebrada causando um erro de Exceção.Em ambos os casos o try envolveu a inclusão do objeto atribuído 
+da camada de negócio (BLL)  e quando houve uma exceção SQL por causa de duplicata o catch o tratava enviando um Json 
+de aviso.  
