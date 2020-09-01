@@ -107,7 +107,7 @@ namespace WebAtividadeEntrevista.Controllers
                 }
                 catch (SqlException ex)
                 {
-                    if (ex.Number == 2601) //  Número corresponde ao erro de quebra do Index único
+                    if (ex.Number == 2601) // Número corresponde ao erro de quebra do Index único em SQLEXception
                     {
                         return Json(model.CPF + " já foi cadastrado");
 
@@ -116,7 +116,7 @@ namespace WebAtividadeEntrevista.Controllers
                     {
                         return Json(ex.Message);
                     }
-                }               
+                }
                 return Json("Cadastro alterado com sucesso");
             }
         }
